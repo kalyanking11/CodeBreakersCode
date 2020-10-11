@@ -1,0 +1,72 @@
+EFFICIENT SHIPPING
+public static long getMaxUnits(List<Long> boxes, List<Long> unitsPerBox, long truckSize) {
+    // Write your code here
+        Long[] boxArr = new Long[boxes.size()];
+        boxArr = boxes.toArray(boxArr);
+        Long[] uPB = new Long[unitsPerBox.size()];
+        uPB = unitsPerBox.toArray(uPB);
+
+        long result =0;
+        PriorityQueue<Long[]> q = new PriorityQueue<Long[]>((a,b)->{return Long.compare(b[0],a[0]);});
+        for (int i =0; i<boxArr.length; ++i)
+        {
+            q.offer(new Long[]{uPB[i], boxArr[i]});
+        }
+        while(truckSize > 0 && q.size() > 0)
+        {
+            Long[] info = q.poll();
+            result = result + info[0] * (truckSize > info[1] ? info[1] : truckSize);
+            truckSize = truckSize - info[1];
+        }
+        return result;
+
+UNIVERSITY CAREER FAIR
+lst = sorted(list(zip(arrival,duration)), key = lambda p: (sum(p), p[1]))
+    result, end = 0, -float('inf')
+    for arr, dur in lst: 
+        if arr >= end:
+            result, end = result +1, arr +dur
+    return result
+
+COMMON PREFIX SUM
+def commonPrefixSum(s):
+    pa = [0] * len(s)
+    l, r = 0, 0
+
+    for i in range(0, len(s)):
+        if i<=r:
+            if pa[i-l] < r - i +1:
+                pa[i] = pa[i-l]
+            else:
+                l=i
+                while r < len(s) and s[r-l] == s[r]:
+                    r = r+1
+                pa[i] = r-l
+                r = r - 1
+        else:
+            l = i
+            r = i
+            while r<len(s) and s[r-l] == s[r]:
+                r = r + 1
+            pa[i] = r-l
+            r = r - 1
+    total_sum = len(s)
+    for i in range (1, len(s)):
+        total_sum = total_sum + pa[i]
+    return total_sum                
+
+def commonPrefix(inputs):
+    # Write your code here
+    return [commonPrefixSum(s) for s in inputs]
+
+# Construction Management - Paint House 2 Leetcode
+# Piles Of Boxes
+# Prison Break - https://leetcode.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/
+# Word Compression
+# Efficient Janitor
+# Smart Sale
+# Common Prefix Length
+# Build Offices
+
+
+        
