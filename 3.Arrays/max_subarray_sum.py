@@ -6,9 +6,9 @@ Created on Mon Jul 27 13:10:18 2020
 """
 
 # [1, -2, 3, -5, 6, 8, -10]
-# 
+# -> [6,8] = 14
 #
-# works only for +ve numbers
+#works only for +ve numbers
 # def subarray_sum(arr):
 #     #kadane's algorithm
 #     max_so_far = 0
@@ -22,7 +22,7 @@ Created on Mon Jul 27 13:10:18 2020
 #     return max_so_far
 # print(subarray_sum([1, -2, 3, -5, 6, 8, -10]))
             
-# for all numbers
+# for all negative numbers
 def subarray_sum(arr):
     #kadane's algorithm
     curr_max = arr[0]
@@ -32,13 +32,3 @@ def subarray_sum(arr):
         max_so_far = max(max_so_far, curr_max)
     return max_so_far
 print(subarray_sum([1, -2, 3, -5, 6, 8, -10]))
-
-
-
-
-
-
-
-
-
-
